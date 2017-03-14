@@ -28,7 +28,7 @@
         <resources>
             <resource>
                 <directory>${node_modules}/angular-in-memory-web-api/bundles</directory>
-                <targetPath>${project.build.js.lib.directory}/angular-in-memory-web-api</targetPath>
+                <targetPath>${project.build.libOutputDirectory}/angular-in-memory-web-api</targetPath>
                 <includes>
                     <include>in-memory-web-api.umd.js</include>
                 </includes>
