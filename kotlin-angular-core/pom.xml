@@ -16,6 +16,13 @@
     <name>Kotlin Angular Core</name>
     <description>@angular/core for Kotlin</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.crunc</groupId>
+            <artifactId>kotlin-rxjs</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <resources>
             <resource>

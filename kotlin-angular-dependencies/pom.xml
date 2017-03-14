@@ -20,6 +20,7 @@
         <kotlin.version>1.1.0</kotlin.version>
         <kotlin-angular.version>2.4.8-SNAPSHOT</kotlin-angular.version>
         <kotlin-angular-in-memory-web-api.version>0.3.1-SNAPSHOT</kotlin-angular-in-memory-web-api.version>
+        <kotlin-rxjs.version>5.2.0-SNAPSHOT</kotlin-rxjs.version>
         <dokka.version>0.9.13</dokka.version>
 
         <kotlin-maven-plugin.version>${kotlin.version}</kotlin-maven-plugin.version>
@@ -43,6 +44,11 @@
                 <version>${kotlin.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.github.crunc</groupId>
+                <artifactId>kotlin-rxjs</artifactId>
+                <version>${kotlin-rxjs.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.github.crunc</groupId>
                 <artifactId>kotlin-angular-core</artifactId>
