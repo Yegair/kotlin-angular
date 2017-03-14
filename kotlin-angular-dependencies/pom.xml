@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>kotlin-angular-dependencies</artifactId>
+    <packaging>pom</packaging>
+
+    <parent>
+        <artifactId>kotlin-angular</artifactId>
+        <groupId>com.github.crunc</groupId>
+        <version>2.4.8-SNAPSHOT</version>
+    </parent>
+
+    <name>Kotlin Angular Dependencies</name>
+    <description>Dependency Management for Kotlin Angular Projects</description>
+
+    <properties>
+        <kotlin.version>1.1.0</kotlin.version>
+        <kotlin-angular.version>2.4.8-SNAPSHOT</kotlin-angular.version>
+        <kotlin-angular-in-memory-web-api.version>0.3.1-SNAPSHOT</kotlin-angular-in-memory-web-api.version>
+
+        <kotlin-maven-plugin.version>${kotlin.version}</kotlin-maven-plugin.version>
+        <frontend-maven-plugin.version>1.3</frontend-maven-plugin.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <maven-dependency-plugin.version>3.0.0</maven-dependency-plugin.version>
+        <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib-js</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-compiler</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.crunc</groupId>
+                <artifactId>kotlin-angular-core</artifactId>
+                <version>${kotlin-angular.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.crunc</groupId>
+                <artifactId>kotlin-angular-in-memory-web-api</artifactId>
+                <version>${kotlin-angular-in-memory-web-api.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-maven-plugin</artifactId>
+                    <version>${kotlin-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>${frontend-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

@@ -3,19 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.crunc</groupId>
     <artifactId>kotlin-angular-parent</artifactId>
-    <version>2.4.8-SNAPSHOT</version>
     <packaging>pom</packaging>
+
+    <parent>
+        <groupId>com.github.crunc</groupId>
+        <artifactId>kotlin-angular-dependencies</artifactId>
+        <version>2.4.8-SNAPSHOT</version>
+        <relativePath>../kotlin-angular-dependencies</relativePath>
+    </parent>
 
     <name>Kotlin Angular Parent</name>
     <description>Parent POM for Kotlin Angular Projects</description>
-
-    <scm>
-        <url>https://github.com/Crunc/kotlin-angular-parent.git</url>
-        <connection>scm:git:git@github.com:Crunc/kotlin-angular-parent.git</connection>
-        <developerConnection>scm:git:git@github.com:Crunc/kotlin-angular-parent.git</developerConnection>
-    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,40 +28,9 @@
         <project.build.outputFile>${project.build.outputDirectory}/${project.artifactId}.js</project.build.outputFile>
         <project.build.testOutputFile>${project.build.testOutputDirectory}/${project.artifactId}-test.js</project.build.testOutputFile>
 
-        <kotlin.version>1.1.0</kotlin.version>
-        <kotlin-angular.version>2.4.8-SNAPSHOT</kotlin-angular.version>
-        <kotlin-angular-in-memory-web-api.version>0.3.1-SNAPSHOT</kotlin-angular-in-memory-web-api.version>
-        <kotlin-rxjs.version>5.2.0-SNAPSHOT</kotlin-rxjs.version>
-
         <kotlin-maven-plugin.version>${kotlin.version}</kotlin-maven-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-stdlib-js</artifactId>
-                <version>${kotlin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-compiler</artifactId>
-                <version>${kotlin.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.github.crunc</groupId>
-                <artifactId>kotlin-angular-core</artifactId>
-                <version>${kotlin-angular.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.crunc</groupId>
-                <artifactId>kotlin-angular-in-memory-web-api</artifactId>
-                <version>${kotlin-angular-in-memory-web-api.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -92,7 +60,6 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -125,7 +92,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <classesDirectory>${project.build.outputDirectory}</classesDirectory>
                 </configuration>

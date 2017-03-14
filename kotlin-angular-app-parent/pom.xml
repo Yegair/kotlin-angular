@@ -4,7 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>kotlin-angular-app-parent</artifactId>
-    <version>2.4.8-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -17,16 +16,11 @@
     <name>Kotlin Angular App Parent</name>
     <description>Parent POM for Kotlin Angular Apps</description>
 
-    <properties>
-        <maven-dependency-plugin.version>3.0.0</maven-dependency-plugin.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven-dependency-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>unpack-js-dependencies</id>
@@ -35,7 +29,6 @@
                             <goal>unpack-dependencies</goal>
                         </goals>
                         <configuration>
-                            <excludeArtifactIds>kotlin-compiler</excludeArtifactIds>
                             <includes>**/*.js,**/*.js.map</includes>
                             <outputDirectory>${project.build.outputDirectory}</outputDirectory>
                             <overWriteReleases>false</overWriteReleases>

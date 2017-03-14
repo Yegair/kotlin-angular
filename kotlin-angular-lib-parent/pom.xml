@@ -4,7 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>kotlin-angular-lib-parent</artifactId>
-    <version>2.4.8-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -14,7 +13,59 @@
         <relativePath>../kotlin-angular-parent</relativePath>
     </parent>
 
-    <name>Kotling Angular Library Parent</name>
+    <name>Kotlin Angular Library Parent</name>
     <description>Parent POM for Kotlin Angular Libraries</description>
+
+    <properties>
+        <project.build.libOutputDirectory>${project.build.outputDirectory}/lib</project.build.libOutputDirectory>
+        <node.version>v7.1.0</node.version>
+        <node_modules>${project.basedir}/node_modules</node_modules>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${node_modules}</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>install-node-and-npm</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>${node.version}</nodeVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm-install</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <installDirectory>${project.build.directory}</installDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
