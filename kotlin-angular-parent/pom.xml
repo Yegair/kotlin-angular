@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.crunc</groupId>
+    <artifactId>kotlin-angular-parent</artifactId>
+    <version>2.4.8-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Kotlin Angular Parent</name>
+    <description>Parent POM for Kotlin Angular Projects</description>
+
+    <scm>
+        <url>https://github.com/Crunc/kotlin-angular-parent.git</url>
+        <connection>scm:git:git@github.com:Crunc/kotlin-angular-parent.git</connection>
+        <developerConnection>scm:git:git@github.com:Crunc/kotlin-angular-parent.git</developerConnection>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceDirectory>${project.basedir}/src/main/kotlin</project.build.sourceDirectory>
+        <project.build.testSourceDirectory>${project.basedir}/src/test/kotlin</project.build.testSourceDirectory>
+        <project.build.outputDirectory>${project.build.directory}/js</project.build.outputDirectory>
+        <project.build.testOutputDirectory>${project.build.directory}/test-js</project.build.testOutputDirectory>
+        <project.build.resourceDirectory>${project.basedir}/src/main/resources</project.build.resourceDirectory>
+        <project.build.testResourceDirectory>${project.basedir}/src/test/resources</project.build.testResourceDirectory>
+        <project.build.outputFile>${project.build.outputDirectory}/${project.artifactId}.js</project.build.outputFile>
+        <project.build.testOutputFile>${project.build.testOutputDirectory}/${project.artifactId}-test.js</project.build.testOutputFile>
+
+        <kotlin.version>1.1.0</kotlin.version>
+        <kotlin-angular.version>2.4.8-SNAPSHOT</kotlin-angular.version>
+        <kotlin-angular-in-memory-web-api.version>0.3.1-SNAPSHOT</kotlin-angular-in-memory-web-api.version>
+        <kotlin-rxjs.version>5.2.0-SNAPSHOT</kotlin-rxjs.version>
+
+        <kotlin-maven-plugin.version>${kotlin.version}</kotlin-maven-plugin.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib-js</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-compiler</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.crunc</groupId>
+                <artifactId>kotlin-angular-core</artifactId>
+                <version>${kotlin-angular.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.crunc</groupId>
+                <artifactId>kotlin-angular-in-memory-web-api</artifactId>
+                <version>${kotlin-angular-in-memory-web-api.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-js</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+        <testSourceDirectory>${project.build.testSourceDirectory}</testSourceDirectory>
+        <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+        <testOutputDirectory>${project.build.testOutputDirectory}</testOutputDirectory>
+        <resources>
+            <resource>
+                <directory>${project.build.resourceDirectory}</directory>
+                <targetPath>${project.build.outputDirectory}</targetPath>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.build.testResourceDirectory}</directory>
+                <targetPath>${project.build.testOutputDirectory}</targetPath>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>js</goal>
+                        </goals>
+                        <configuration>
+                            <moduleKind>umd</moduleKind>
+                            <metaInfo>true</metaInfo>
+                            <sourceMap>true</sourceMap>
+                            <outputFile>${project.build.outputFile}</outputFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>test-js</goal>
+                        </goals>
+                        <configuration>
+                            <moduleKind>umd</moduleKind>
+                            <metaInfo>true</metaInfo>
+                            <sourceMap>true</sourceMap>
+                            <outputFile>${project.build.testOutputFile}</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
