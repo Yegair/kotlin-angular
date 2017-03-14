@@ -1,28 +1,22 @@
 package com.github.crunc.angular.sample.services
 
-import com.github.crunc.angular.sample.Hero
-import ng.api.inMemoryWebApi.InMemoryData
 import ng.api.inMemoryWebApi.InMemoryDbService
+import kotlin.js.Json
+import kotlin.js.json
 
 class InMemoryDataService : InMemoryDbService() {
-    override fun createData(): InMemoryData {
-        val data = InMemoryData("heroes") {
-            arrayOf(
-                    Hero(id = 11, name = "Mr. Nice"),
-                    Hero(id = 12, name = "Narco"),
-                    Hero(id = 13, name = "Bombasto"),
-                    Hero(id = 14, name = "Celeritas"),
-                    Hero(id = 15, name = "Magneta"),
-                    Hero(id = 16, name = "RubberMan"),
-                    Hero(id = 17, name = "Dynama"),
-                    Hero(id = 18, name = "Dr IQ"),
-                    Hero(id = 19, name = "Magma"),
-                    Hero(id = 20, name = "Tornado")
+    override fun createDb(): Json = json(
+            "heroes" to arrayOf(
+                    json("id" to 11, "name" to "Mr. Nice"),
+                    json("id" to 12, "name" to "Narco"),
+                    json("id" to 13, "name" to "Bombasto"),
+                    json("id" to 14, "name" to "Celeritas"),
+                    json("id" to 15, "name" to "Magneta"),
+                    json("id" to 16, "name" to "RubberMan"),
+                    json("id" to 17, "name" to "Dynama"),
+                    json("id" to 18, "name" to "Dr IQ"),
+                    json("id" to 19, "name" to "Magma"),
+                    json("id" to 20, "name" to "Tornado")
             )
-        }
-
-        console.log(data)
-
-        return data
-    }
+    )
 }
