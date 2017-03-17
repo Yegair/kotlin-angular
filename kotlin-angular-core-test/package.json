@@ -1,0 +1,9 @@
+{
+  "name": "kotlin-angular-test",
+  "version": "2.4.8",
+  "private": true,
+  "dependencies": {
+    "@angular/core": "2.4.8",
+    "zone.js": "0.7.7"
+  }
+}

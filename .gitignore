@@ -6,6 +6,13 @@
 
 /**/target/
 
+# Gradle
+
+/**/.gradle/
+/**/build/
+/**/gradlew
+/**/gradlew.bat
+
 # IntelliJ
 
 /**/*.iml
@@ -20,3 +27,7 @@
 /**/.project
 /**/.settings/
 /**/.springBeans
+
+# Mac OS
+
+.DS_Store

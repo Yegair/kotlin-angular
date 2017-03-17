@@ -23,6 +23,7 @@
         <module>kotlin-angular-lib-parent</module>
         <module>kotlin-angular-app-parent</module>
         <module>kotlin-angular-core</module>
+        <module>kotlin-angular-core-test</module>
         <module>kotlin-angular-in-memory-web-api</module>
         <module>kotlin-angular-sample</module>
     </modules>

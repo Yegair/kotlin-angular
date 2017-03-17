@@ -25,11 +25,15 @@
         <project.build.testOutputDirectory>${project.build.directory}/test-js</project.build.testOutputDirectory>
         <project.build.resourceDirectory>${project.basedir}/src/main/resources</project.build.resourceDirectory>
         <project.build.testResourceDirectory>${project.basedir}/src/test/resources</project.build.testResourceDirectory>
-        <project.build.outputFile>${project.build.outputDirectory}/${project.artifactId}.js</project.build.outputFile>
-        <project.build.testOutputFile>${project.build.testOutputDirectory}/${project.artifactId}-test.js</project.build.testOutputFile>
+        <project.build.outputFileName>${project.artifactId}.js</project.build.outputFileName>
+        <project.build.outputFile>${project.build.outputDirectory}/${project.build.outputFileName}</project.build.outputFile>
+        <project.build.testOutputFileName>${project.artifactId}-test.js</project.build.testOutputFileName>
+        <project.build.testOutputFile>${project.build.testOutputDirectory}/${project.build.testOutputFileName}</project.build.testOutputFile>
 
         <kotlin-maven-plugin.version>${kotlin.version}</kotlin-maven-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+
+        <node_modules>${basedir}/node_modules</node_modules>
     </properties>
 
     <dependencies>
@@ -53,6 +57,10 @@
         <testResources>
             <testResource>
                 <directory>${project.build.testResourceDirectory}</directory>
+                <targetPath>${project.build.testOutputDirectory}</targetPath>
+            </testResource>
+            <testResource>
+                <directory>${project.build.resourceDirectory}</directory>
                 <targetPath>${project.build.testOutputDirectory}</targetPath>
             </testResource>
         </testResources>
@@ -113,5 +121,134 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>node-and-yarn</id>
+            <activation>
+                <file>
+                    <exists>package.json</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>${node_modules}</directory>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>install-node-and-yarn</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>install-node-and-yarn</goal>
+                                </goals>
+                                <configuration>
+                                    <installDirectory>${project.build.directory}</installDirectory>
+                                    <nodeVersion>${node.version}</nodeVersion>
+                                    <yarnVersion>${yarn.version}</yarnVersion>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>yarn-install</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>yarn</goal>
+                                </goals>
+                                <configuration>
+                                    <installDirectory>${project.build.directory}</installDirectory>
+                                    <arguments>install</arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>karma-test</id>
+            <activation>
+                <file>
+                    <exists>src/test/resources/karma.conf.js</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack-js-test-dependencies</id>
+                                <phase>generate-test-resources</phase>
+                                <goals>
+                                    <goal>unpack-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <includes>**/*.js,**/*.js.map</includes>
+                                    <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
+                                    <overWriteReleases>false</overWriteReleases>
+                                    <overWriteSnapshots>true</overWriteSnapshots>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>install-node-and-yarn-karma</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>install-node-and-yarn</goal>
+                                </goals>
+                                <configuration>
+                                    <installDirectory>${project.build.testOutputDirectory}</installDirectory>
+                                    <workingDirectory>${project.build.testOutputDirectory}</workingDirectory>
+                                    <nodeVersion>${node.version}</nodeVersion>
+                                    <yarnVersion>${yarn.version}</yarnVersion>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>yarn-install-karma</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>yarn</goal>
+                                </goals>
+                                <configuration>
+                                    <installDirectory>${project.build.testOutputDirectory}</installDirectory>
+                                    <workingDirectory>${project.build.testOutputDirectory}</workingDirectory>
+                                    <arguments>install</arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>karma-tests</id>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>karma</goal>
+                                </goals>
+                                <configuration>
+                                    <installDirectory>${project.build.testOutputDirectory}</installDirectory>
+                                    <workingDirectory>${project.build.testOutputDirectory}</workingDirectory>
+                                    <karmaConfPath>${project.build.testOutputDirectory}/karma.conf.js</karmaConfPath>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

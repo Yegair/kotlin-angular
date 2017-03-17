@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>kotlin-angular-core-test</artifactId>
+
+    <parent>
+        <artifactId>kotlin-angular-lib-parent</artifactId>
+        <groupId>com.github.crunc</groupId>
+        <version>2.4.8-SNAPSHOT</version>
+        <relativePath>../kotlin-angular-lib-parent</relativePath>
+    </parent>
+
+    <name>Kotlin Angular Core Test</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.crunc</groupId>
+            <artifactId>kotlin-jasmine-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.crunc</groupId>
+            <artifactId>kotlin-angular-core</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>${node_modules}/@angular/core/bundles</directory>
+                <targetPath>${project.build.libOutputDirectory}/angular</targetPath>
+                <includes>
+                    <include>core-testing.umd.js</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${node_modules}/zone.js/dist</directory>
+                <targetPath>${project.build.libOutputDirectory}/zone.js</targetPath>
+                <includes>
+                    <include>async-test.js</include>
+                    <include>jasmine-patch.js</include>
+                    <include>proxy.js</include>
+                    <include>sync-test.js</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+</project>
