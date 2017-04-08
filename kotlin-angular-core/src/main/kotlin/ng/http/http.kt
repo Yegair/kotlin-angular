@@ -1,10 +1,9 @@
-@file:JsModule("ng")
-@file:JsQualifier("http")
+@file:JsModule("ng.http")
 @file:JsNonModule
 
 package ng.http
 
-import rx.Observable
+import rxjs.Observable
 
 external internal enum class RequestMethod {
     Get,

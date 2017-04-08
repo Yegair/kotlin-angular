@@ -3,7 +3,7 @@ package com.github.crunc.angular.sample.services
 import com.github.crunc.angular.sample.Hero
 import ng.api.Provider
 import ng.api.http.Http
-import rx.Observable
+import rxjs.Observable
 
 class HeroService(private val http: Http) {
 

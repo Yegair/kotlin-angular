@@ -11,6 +11,7 @@ class TestBed internal constructor(private val _testBed: ng.core.testing.TestBed
     }
 
     companion object {
+
         fun configureTestingModule(
                 declarations: Array<ComponentReference<Any>> = emptyArray()
         ): TestBed {
@@ -22,6 +23,11 @@ class TestBed internal constructor(private val _testBed: ng.core.testing.TestBed
             }
 
             return TestBed(ng.core.testing.TestBed.configureTestingModule(options))
+        }
+
+        fun <T: Any> createComponent(reference: ComponentReference<T>): ComponentFixture<T> {
+            val fixture = ng.core.testing.TestBed.createComponent(reference.target)
+            return ComponentFixture(fixture)
         }
     }
 }

@@ -1,5 +1,4 @@
-@file:JsModule("ng")
-@file:JsQualifier("platformBrowser")
+@file:JsModule("ng.platformBrowser")
 @file:JsNonModule
 
 package ng.platformBrowser

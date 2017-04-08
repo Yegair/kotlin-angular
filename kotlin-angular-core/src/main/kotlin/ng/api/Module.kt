@@ -1,5 +1,6 @@
 package ng.api
 
+import ng.core.NgModuleOptions
 import kotlin.reflect.KClass
 
 abstract class Module<out T : Any>(
@@ -34,7 +35,7 @@ abstract class Module<out T : Any>(
                 bootstrap: Array<out JsClass<out Any>> = emptyArray()
         ): JsClass<out T> {
             return ng.core.NgModule(
-                    ng.core.NgModuleOptions(
+                    NgModuleOptions(
                             providers = providers,
                             declarations = declarations,
                             imports = imports,

@@ -1,5 +1,4 @@
-@file:JsModule("ng")
-@file:JsQualifier("platformBrowserDynamic")
+@file:JsModule("ng.platformBrowserDynamic")
 @file:JsNonModule
 
 package ng.platformBrowserDynamic

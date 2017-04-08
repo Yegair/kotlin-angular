@@ -17,7 +17,7 @@
     <description>Parent POM for Kotlin Angular Libraries</description>
 
     <properties>
-        <project.build.libOutputDirectory>${project.build.outputDirectory}/lib</project.build.libOutputDirectory>
+        <project.build.libOutputDirectory>${project.build.outputDirectory}</project.build.libOutputDirectory>
     </properties>
 
 </project>

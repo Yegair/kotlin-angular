@@ -1,10 +1,9 @@
-@file:JsModule("ng")
-@file:JsQualifier("router")
+@file:JsModule("ng.router")
 @file:JsNonModule
 
 package ng.router
 
-import rx.Observable
+import rxjs.Observable
 import kotlin.js.*
 
 external internal class RouterModule {

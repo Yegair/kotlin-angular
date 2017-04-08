@@ -8,13 +8,15 @@ import ng.api.core.testing.async
 
 val spec = describe("HeroDetailComponent") {
 
-    beforeEach(async {
-        TestBed.configureTestingModule(
-                declarations = arrayOf(HeroDetailComponent)
-        )
-    })
+    beforeEach { ->
+        async {
+            TestBed.configureTestingModule(
+                    declarations = arrayOf(HeroDetailComponent)
+            ).compileComponents()
+        }
+    }
 
-    it("should run") {
+    it("should run") { ->
         console.log("running...")
     }
 }

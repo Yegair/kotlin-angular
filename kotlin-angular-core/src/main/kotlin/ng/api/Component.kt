@@ -1,5 +1,6 @@
 package ng.api
 
+import ng.core.ComponentOptions
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 
@@ -42,7 +43,7 @@ abstract class Component<out T : Any>(
         ): JsClass<out T> {
 
             return ng.core.Component(
-                    ng.core.ComponentOptions(
+                    ComponentOptions(
                             moduleId = moduleId,
                             selector = selector,
                             template = template,

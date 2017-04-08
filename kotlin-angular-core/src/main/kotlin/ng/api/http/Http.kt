@@ -1,7 +1,7 @@
 package ng.api.http
 
 import ng.api.Provider
-import rx.Observable
+import rxjs.Observable
 
 class Http internal constructor(private val http: ng.http.Http) {
 

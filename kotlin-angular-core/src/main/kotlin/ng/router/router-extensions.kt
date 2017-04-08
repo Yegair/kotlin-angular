@@ -1,7 +1,7 @@
 package ng.router
 
 import ng.api.ProviderReference
-import rx.Observable
+import rxjs.Observable
 
 val ActivatedRouteRef: ProviderReference<ActivatedRoute>
     get() = ProviderReference.of(ActivatedRoute::class.js)

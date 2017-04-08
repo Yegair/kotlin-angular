@@ -28,6 +28,7 @@
         <dependency>
             <groupId>com.github.crunc</groupId>
             <artifactId>kotlin-angular-core-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

@@ -7,7 +7,7 @@ import ng.api.core.OnInit
 import ng.router.ActivatedRoute
 import ng.router.ActivatedRouteRef
 import ng.router.params
-import rx.nonNull
+import rxjs.nonNull
 
 class HeroDetailComponent(
         private val heroService: HeroService,
@@ -24,6 +24,7 @@ class HeroDetailComponent(
     )
 
     var hero: Hero? = null
+
 
     override fun ngOnInit() {
         route.params

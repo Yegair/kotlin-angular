@@ -1,5 +1,7 @@
 package ng.api.core.testing
 
-fun async(work: () -> Unit): () -> Unit {
+import kotlin.js.Promise
+
+fun async(work: () -> Unit): () -> Promise<Any> {
     return ng.core.testing.async(work)
 }

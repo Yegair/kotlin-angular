@@ -178,9 +178,7 @@
         <profile>
             <id>karma-test</id>
             <activation>
-                <file>
-                    <exists>src/test/resources/karma.conf.js</exists>
-                </file>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <build>
                 <plugins>
@@ -200,6 +198,19 @@
                                     <overWriteReleases>false</overWriteReleases>
                                     <overWriteSnapshots>true</overWriteSnapshots>
                                 </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.github.crunc</groupId>
+                        <artifactId>kotlin-jasmine-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>generate-karma-conf</id>
+                                <phase>generate-test-resources</phase>
+                                <goals>
+                                    <goal>generate-karma-test</goal>
+                                </goals>
                             </execution>
                         </executions>
                     </plugin>

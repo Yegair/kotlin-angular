@@ -1,5 +1,4 @@
-@file:JsModule("ng")
-@file:JsQualifier("forms")
+@file:JsModule("ng.forms")
 @file:JsNonModule
 
 package ng.forms
