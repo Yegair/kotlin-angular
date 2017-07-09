@@ -1,0 +1,5 @@
+
+description = 'Kotlin Angular Core'
+dependencies {
+    compile group: 'com.github.crunc', name: 'kotlin-rxjs', version:'5.2.0-SNAPSHOT'
+}

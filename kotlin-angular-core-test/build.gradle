@@ -1,0 +1,6 @@
+
+description = 'Kotlin Angular Core Test'
+dependencies {
+    compile group: 'com.github.crunc', name: 'kotlin-jasmine-core', version:'2.5.2-SNAPSHOT'
+  compile project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-core')
+}

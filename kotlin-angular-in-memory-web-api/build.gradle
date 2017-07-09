@@ -1,0 +1,5 @@
+
+description = 'Kotlin Angular in-memory web API'
+dependencies {
+  compile project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-core')
+}

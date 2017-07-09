@@ -1,0 +1,18 @@
+rootProject.name = 'kotlin-angular'
+include ':kotlin-angular-dependencies'
+include ':kotlin-angular-dependencies:kotlin-angular-parent'
+include ':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent'
+include ':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-app-parent'
+include ':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-core'
+include ':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-core-test'
+include ':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-in-memory-web-api'
+include ':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-app-parent:kotlin-angular-sample'
+
+project(':kotlin-angular-dependencies').projectDir = "$rootDir/kotlin-angular-dependencies" as File
+project(':kotlin-angular-dependencies:kotlin-angular-parent').projectDir = "$rootDir/kotlin-angular-parent" as File
+project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent').projectDir = "$rootDir/kotlin-angular-lib-parent" as File
+project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-app-parent').projectDir = "$rootDir/kotlin-angular-app-parent" as File
+project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-core').projectDir = "$rootDir/kotlin-angular-core" as File
+project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-core-test').projectDir = "$rootDir/kotlin-angular-core-test" as File
+project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-in-memory-web-api').projectDir = "$rootDir/kotlin-angular-in-memory-web-api" as File
+project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-app-parent:kotlin-angular-sample').projectDir = "$rootDir/kotlin-angular-sample" as File
