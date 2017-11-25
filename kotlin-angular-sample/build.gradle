@@ -1,7 +1,10 @@
-
 description = 'Kotlin Angular Sample'
+
+apply plugin: 'kotlin2js'
+apply plugin: 'org.jetbrains.kotlin.frontend'
+
 dependencies {
-  compile project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-core')
-  compile project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-in-memory-web-api')
-  testCompile project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-core-test')
+    compile project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-core')
+    compile project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-in-memory-web-api')
+    testCompile project(':kotlin-angular-dependencies:kotlin-angular-parent:kotlin-angular-lib-parent:kotlin-angular-core-test')
 }
